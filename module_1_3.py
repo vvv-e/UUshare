@@ -4,6 +4,6 @@ age        = 57         # возраст
 is_student = True       # социальный статус "студент"
 print( "Name:", f_name )
 print( "Age:", age )
-age        = 58         # исправленный возраст
+age        += 1         # исправленный возраст
 print( "New Age:", age )
 print( "Is Student:", is_student )
