@@ -14,4 +14,5 @@ if ( first == third ):
     result += 1
 if ( result == 1 ):
     result = 2
+
 print( result )
