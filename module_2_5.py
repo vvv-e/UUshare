@@ -10,10 +10,9 @@ def get_matrix( n = 0, m = 0, value = 0 ):
             matrix[i].append( value )
     return matrix
 
-print( get_matrix(2,2,10) )
-print( get_matrix(3,5,42) )
-print( get_matrix(4,2,13) )
-print( get_matrix() )
-print( get_matrix(5,-2,10) )
-
-
+result1 = get_matrix(2, 2, 10)
+result2 = get_matrix(3, 5, 42)
+result3 = get_matrix(4, 2, 13)
+print(result1)
+print(result2)
+print(result3)
