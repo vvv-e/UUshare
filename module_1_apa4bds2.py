@@ -7,6 +7,6 @@ students = {'Johnny', 'Bilbo', 'Steve', 'Khendrik', 'Aaron'}
 stu_avg = {}
 students = sorted( list( students ) )
 for i in range(len(students)):
-    stu_avg[students[i]] = float(sum(grades[i])) / float(len(grades[i]))
+    stu_avg[students[i]] = round(float(sum(grades[i])) / float(len(grades[i])),1)
 print( stu_avg )
 
