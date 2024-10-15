@@ -4,7 +4,7 @@ def get_password( x = 3 ):
     if x < 3 or x > 20:
         return "Неверное число на первом камне: " + str(x)
     x_str = str(x) + " - "
-    old =[]
+    old = []
     for i in range( 1, x ):
         for j in range( 2, x ):
             if i == j:
