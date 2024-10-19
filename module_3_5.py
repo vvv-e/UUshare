@@ -7,7 +7,7 @@ def get_multiplied_digits(number):
         first = int(str_number[0:1])
         return first * get_multiplied_digits(int(str_number[1:]))
     else:
-        return int(str_number[0:1]) if int(str_number[0:1]) > 1 else 1
+        return int(str_number[0:1]) if int(str_number[0:1]) > 0 else 1
 
 if __name__ == '__main__':
     result = get_multiplied_digits(40203)
