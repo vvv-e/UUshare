@@ -4,10 +4,10 @@ class House:
     houses_history = []
 
     def __new__(cls, *args, **kwargs):
-        if args[0] in House.houses_history:
+        if args[0] in cls.houses_history:
             print(f'{args[0]} уже есть в истории, объект не создан')
         else:
-            House.houses_history.append(args[0])
+            cls.houses_history.append(args[0])
             return super().__new__(cls)
 
     def __del__(self):
