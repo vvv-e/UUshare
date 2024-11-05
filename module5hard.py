@@ -23,9 +23,9 @@ class UrTube:
                 break
         if evrika:
             if hash(password) == hsh:
-                self.current_user = None
-
-
+                self.current_user = usr
+            else:
+                print(f"Пользователь с именем {nickname} неправильно задал пароль.")
         else:
             print(f"Пользователь с именем {nickname} не существует.")
 
@@ -42,12 +42,17 @@ class UrTube:
             if not usr is None:
                 self.users.append(usr)
                 self.current_user = usr
+            else:
+                print(f"Текущий пользователь не изменен по причине: Пользователь {nickname} не создан.")
 
     def log_out(self):
         self.current_user = None
 
-    def add(self, video):
-        pass
+    def add(self, *video):
+        for v_par in video:
+            evrika = False
+            for v in self.videos:
+               pass # if v_par ==
 
     def get_videos(self, video):
         pass
@@ -67,7 +72,7 @@ class User:
             print("Имя пользователя должно быть строковым. Объект Пользователь не создан.")
         elif not isinstance(args[1], str):
             print("Пароль должен быть строковым. Объект Пользователь не создан.")
-        elif not isinstance(args[1], int):
+        elif not isinstance(args[2], int):
             print("Возраст должен быть целым числом. Объект Пользователь не создан.")
         else:
             return super().__new__(cls)
@@ -102,5 +107,9 @@ class Video:
 
 
 if __name__ == '__main__':
+    ur = UrTube()
     v1 = Video('Лучший язык программирования 2024 года', 200)
     v2 = Video('Для чего девушкам парень программист?', 10, adult_mode=True)
+    ur.register('vasya_pupkin', 'lolkekcheburek', 13)
+    ur.register('urban_pythonist', 'iScX4vIJClb9YQavjAgF', 25)
+    ur.register('vasya_pupkin', 'F8098FM8fjm9jmi', 55)
