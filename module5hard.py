@@ -1,4 +1,6 @@
 # Дополнительное практическое задание по модулю: "Классы и объекты."
+from time import sleep
+
 
 class UrTube:
     """
@@ -66,7 +68,24 @@ class UrTube:
         return title_list
 
     def watch_video(self, title):
-        pass
+        if self.current_user is None:
+            print("Войдите в аккаунт, чтобы смотреть видео.")
+        else:
+            evrika = False
+            vid = None
+            for v in self.videos:
+                if title == v.title:
+                    vid = v
+                    evrika = True
+                    break
+            if evrika:
+                if self.current_user.age < 18 and vid.adult_mode:
+                    print("Вам нет 18 лет, пожалуйста покиньте страницу")
+                else:
+                    for i in range(1, vid.duration + 1):
+                        sleep(1)
+                        print(f"{i} ", end='')
+                    print("Конец видео")
 
 
 class User:
@@ -92,6 +111,7 @@ class User:
 
     def __str__(self):
         return self.nickname
+
 
 class Video:
     """
@@ -141,6 +161,3 @@ if __name__ == '__main__':
 
     # Попытка воспроизведения несуществующего видео
     ur.watch_video('Лучший язык программирования 2024 года!')
-
-
-
