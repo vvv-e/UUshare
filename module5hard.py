@@ -84,8 +84,10 @@ class UrTube:
                 else:
                     for i in range(1, vid.duration + 1):
                         sleep(1)
+                        self.time_now = i
                         print(f"{i} ", end='')
                     print("Конец видео")
+                    self.time_now = 0
 
 
 class User:
@@ -133,6 +135,7 @@ class Video:
     def __init__(self, title, duration, adult_mode=False):
         self.title = title
         self.duration = duration
+        self.time_now = 0
         self.adult_mode = adult_mode
 
 
