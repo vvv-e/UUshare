@@ -7,7 +7,6 @@ class Animal:
     """
 
     def __init__(self):
-        print("init A")
         self.alive = True
         self.fed = False
         self.name = None
