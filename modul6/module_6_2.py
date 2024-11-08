@@ -3,10 +3,10 @@
 class Vehicle:
     __COLOR_VARIANTS = ['blue', 'red', 'green', 'black', 'white']  # допустимые цвета для окрашивания
 
-    def __init__(self, owner, model, color, ep):
+    def __init__(self, owner, model, color, engin_power):
         self.owner = owner  # владелец, str
         self.__model = model  # модель, str
-        self.__engin_power = ep  # мощность двигателя, int
+        self.__engin_power = engin_power  # мощность двигателя, int
         self.__color = color  # цвет, str
 
     # возвращает строку: "Модель: <название модели транспорта>"
@@ -47,8 +47,8 @@ class Vehicle:
 class Sedan(Vehicle):
     __PASSENGERS_LIMIT = 5
 
-    def __init__(self, owner, model, color, ep):
-        super().__init__(owner, model, color, ep)
+    def __init__(self, owner, model, color, engin_power):
+        super().__init__(owner, model, color, engin_power)
 
 
 if __name__ == '__main__':
