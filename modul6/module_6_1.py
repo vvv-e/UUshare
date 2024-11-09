@@ -12,7 +12,7 @@ class Animal:
         self.name = None
 
     def eat(self, food):
-        if food.edible:
+        if isinstance(food, Plant) and food.edible: # если это растение и оно съедобно, то
             print(f"{self.name} съел {food.name}")
             self.fed = True
         else:
