@@ -1,15 +1,17 @@
 # Дополнительное практическое задание по модулю: "Наследование классов."
-from itertools import filterfalse
-
+from math import pi
 
 # родительский
 class Figure:
     sides_count = 0
 
-    def __init__(self):
-        self.__sides = None  # список сторон, целые числа
-        self.__color = None  # список цветов, формат RGB
+    def __init__(self, color, sides):
         self.filled = None  # закрашенный, bool
+        if self.__is_valid_color():
+            self.__color = color  # список цветов, формат RGB
+        else:
+            self.__color = None
+        self.__sides = sides  # список сторон, целые числа
 
     # Метод возвращает список RGB цветов.
     def get_color(self):
@@ -44,9 +46,9 @@ class Figure:
                 return True
         return False
 
-    # Метод должен возвращать значение я атрибута __sides.
+    # Метод должен возвращать значение атрибута __sides.
     def get_sides(self):
-        pass
+        return self.__sides
 
     # возвращает периметр фигуры.
     def __len__(self):
@@ -60,8 +62,12 @@ class Figure:
 class Circle(Figure):
     sides_count = 1
 
-    def __init__(self):
-        __radius = None  # радиус
+    def __init__(self, color, *args):
+        if len(args) == 1 and isinstance(args[0], int):
+            super().__init__(color, [args[0]])
+        else:
+            super().__init__(color, [1])
+        __radius = 1 / ( 2* pi)  # радиус
 
     # возвращает площадь круга (можно рассчитать как через длину, так и через радиус).
     def get_square(self):
