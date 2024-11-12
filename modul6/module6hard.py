@@ -85,10 +85,11 @@ class Circle(Figure):
         super().set_sides(*new_sides)
         self.__radius = self.get_sides()[0] / (2. * pi)  # радиус
 
-    # возвращает площадь круга (можно рассчитать как через длину, так и через радиус).
+    # возвращает площадь круга (расчет через радиус).
     def get_square(self):
         return pi * self.__radius ** 2
 
+    # возвращает радиус
     def get_radius(self):
         return self.__radius
 
