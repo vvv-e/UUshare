@@ -105,6 +105,7 @@ class Triangle(Figure):
         else:
             super().__init__(color, [1 for i in range(Triangle.sides_count)])
 
+    # площадь треугольника по формуле Герона
     def get_square(self):
         s = sum(self.get_sides(), 0)
         s /= 2
