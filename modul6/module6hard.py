@@ -107,8 +107,7 @@ class Triangle(Figure):
 
     # площадь треугольника по формуле Герона
     def get_square(self):
-        s = sum(self.get_sides(), 0)
-        s /= 2
+        s = sum(self.get_sides(), 0) / 2.
         pro = prod([s - i for i in self.get_sides()])
         return sqrt(s * pro)
 
