@@ -1,5 +1,6 @@
 #  Домашнее задание по теме "Оператор "with"
 import re
+from warnings import catch_warnings
 
 
 class WordsFinder:
@@ -10,17 +11,29 @@ class WordsFinder:
     def get_all_words(self):
         all_words = {}
         for fn in self.file_names:
-            with open(fn, encoding="utf-8") as file:
-                lst = []
-                # punctuation = [',', '.', '=', '!', '?', ';', ':', ' - ']
-                for wrd in re.split(r'[,.=\n!?;: ]+', file.read().lower()):
-                    if wrd != "" and wrd != "-":
-                        lst.append(wrd)
-            all_words[fn] = lst
+            try:
+                with open(fn, encoding="utf-8") as file:
+                    lst = []
+                    # punctuation = [',', '.', '=', '!', '?', ';', ':', ' - ']
+                    for wrd in re.split(r'[,.=\n!?;: ]+', file.read().lower()):
+                        if wrd != "" and wrd != "-":
+                            lst.append(wrd)
+                    all_words[fn] = lst
+            except FileNotFoundError:
+                all_words[fn] = []
         return all_words
 
     def find(self, word):
-        return {name: words.index(word.lower()) + 1 for name, words in self.get_all_words().items()}
+        dct = {}
+        for name, words in self.get_all_words().items():
+            try:
+                i = words.index(word.lower()) + 1
+            except ValueError:
+                i = None
+            dct[name] = i
+        return dct
+        # return {name: words.index(word.lower()) + 1 for name, words in self.get_all_words().items()}
+
 
     def count(self, word):
         return {name: words.count(word.lower()) for name, words in self.get_all_words().items()}
