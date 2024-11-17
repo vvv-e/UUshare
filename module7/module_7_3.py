@@ -1,7 +1,5 @@
 #  Домашнее задание по теме "Оператор "with"
 import re
-from warnings import catch_warnings
-
 
 class WordsFinder:
 
