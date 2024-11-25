@@ -1,6 +1,7 @@
 # Домашнее задание по теме "Try и Except"
 
 
+# Сумма
 def personal_sum(numbers):
     incorrect_data = 0
     sum_ = 0.
