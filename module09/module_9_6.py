@@ -1,5 +1,6 @@
 # Домашнее задание по теме "Генераторы"
 
+# генератор перебора всех подстрок строки text
 def all_variants(text):
     for i in range(len(text)):
         for j in range(len(text) - i):
