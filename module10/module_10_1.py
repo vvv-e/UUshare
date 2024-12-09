@@ -15,7 +15,6 @@ def convert_pretty(td):
 
 
 def write_words(word_count, file_name):
-    i = 0
     with open(file_name, "w", encoding="utf-8") as file:
         for i in range(1, word_count + 1):
             file.write(f"Какое-то слово № {i}\n")
