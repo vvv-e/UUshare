@@ -1,7 +1,7 @@
 # Домашняя работа по уроку "Модули и пакеты"
 
-from modul01.fake_math import divide as fake_divide
-from modul01.true_math import divide as true_divide
+from module01.fake_math import divide as fake_divide
+from module01.true_math import divide as true_divide
 
 if __name__ == '__main__':
     result1 = fake_divide(69, 3)
