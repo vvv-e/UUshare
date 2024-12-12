@@ -17,12 +17,11 @@ class Bank:
             self.balance += money_cash
             sleep(0.001)
             print(f"Пополнение: {money_cash}. Баланс: {self.balance}\n", end="")
-            if i_trans == 99:  # на последней итерации установить флаг окончания deposit
-                self.run_deposit = False
             if self.balance >= 500 and self.lock.locked():
                 self.lock.release()
-            if not self.run_deposit and self.lock.locked():  # разблокировать замок при окончании deposit
-                self.lock.release()
+        self.run_deposit = False
+        if self.lock.locked():  # разблокировать замок при окончании deposit
+            self.lock.release()
 
     def take(self):
         for i_trans in range(100):
@@ -38,7 +37,7 @@ class Bank:
                     if not self.lock.locked():  # 1-я строка. Конструкция из 3-х строк, для блокирования потока take
                         self.lock.acquire()  # 2-ая строка
                     self.lock.acquire()  # 3-я строка
-                else: # если deposit не работает, то закончить работу без блокировок
+                else:  # если deposit не работает, то закончить работу без блокировок
                     continue
 
 
