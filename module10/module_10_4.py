@@ -1,6 +1,4 @@
 # Домашнее задание по теме "Очереди для обмена данными между потоками."
-import threading
-from itertools import filterfalse
 from random import randint
 from threading import Thread
 from time import sleep
