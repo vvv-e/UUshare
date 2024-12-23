@@ -57,7 +57,7 @@ if __name__ == "__main__":
     print("-" * 50, "pillow", "-" * 50)
     image_path = "1515929141.jpg"
     image = Image.open(image_path) # чтение из файла 1515929141.jpg
-    image = image.resize((1920, int(image.size[1] * 1920 / image.size[0]))) # увеличить размер (пропорционально)
+    image = image.resize((1920, int(image.size[1] * 1920 / image.size[0]))) # изменить размер (пропорционально)
     image = image.convert("L") # преобразовать в ч/б изображение
     image.save("result.jpg") # запись в файл result.jpg
     image = None
