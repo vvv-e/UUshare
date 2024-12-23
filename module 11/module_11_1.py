@@ -7,11 +7,10 @@ import matplotlib.pyplot as plt
 from itertools import chain
 
 if __name__ == "__main__":
-    """
     # requests
     print("-" * 50, "requests", "-" * 50)
     UU_URL = "https://urban-university.pro"
-    res = requests.get(UU_URL)
+    res = requests.get(UU_URL) # чтение из https://urban-university.pro
     if str(res) == "<Response [200]>":
         print(res.content)
     else:
@@ -38,27 +37,34 @@ if __name__ == "__main__":
     
     # pandas
     print("-" * 50, "pandas", "-" * 50)
-    flp = pd.read_csv("s3.csv", sep=";")
-    print(flp)
-    print(flp[["AVGDLJEM", "AVGDL16"]].describe())
+    flp = pd.read_csv("s3.csv", sep=";") # чтение из файла s3.csv
+    print(flp[["AVGDLJEM", "AVGDL16"]].describe()) # получить статистические характеристики
     with pd.ExcelWriter("s3.xlsx") as writer:
-        flp.to_excel(writer)
+        flp.to_excel(writer) # запись в файл s3.xlsx
     flp = None
     
     # numpy
     print("-" * 50, "numpy", "-" * 50)
     narr =  np.array([[2, 6, 1], [4, 5, 3]])
-    narr.sort()
+    narr.sort() # сортировать
+    print(narr, "\n")
+    narr = narr.T # транспонировать
     print(narr)
-    narr = narr.T
-    print(narr)
-    np.savetxt('narr.csv', narr)
+    np.savetxt('narr.csv', narr) # запись в файл narr.csv
     np = None
-    """
 
-    # matplotlib + pandas
-    print("-" * 50, "matplotlib", "-" * 50)
-    flp = pd.read_csv("s3.csv", sep=";")
+    # pillow
+    print("-" * 50, "pillow", "-" * 50)
+    image_path = "1515929141.jpg"
+    image = Image.open(image_path) # чтение из файла 1515929141.jpg
+    image = image.resize((1920, int(image.size[1] * 1920 / image.size[0]))) # увеличить размер (пропорционально)
+    image = image.convert("L") # преобразовать в ч/б изображение
+    image.save("result.jpg") # запись в файл result.jpg
+    image = None
+
+    # matplotlib + pandas + numpy
+    print("-" * 50, "matplotlib + pandas + numpy", "-" * 50)
+    flp = pd.read_csv("s3.csv", sep=";") # чтение из файла s3.csv
     flp["DELTA1"] = (flp["AVGDLJEM"] - flp["AVGDL16"])
     flp["DELTA2"] = (flp["GMDLJEM"] - flp["GMDL16"])
     array1 = flp[["DELTA1"]].to_numpy()
@@ -67,9 +73,6 @@ if __name__ == "__main__":
     flat_list2 = list(chain(*array2))
     plt.hist([flat_list1, flat_list2], bins=100, histtype='step')
     plt.semilogy()
-    plt.show()
+    plt.show() # нарисовать 2-е гистограммы невязок
     flp = None
     plt = None
-
-    # pillow
-    print("-" * 50, "pillow", "-" * 50)
