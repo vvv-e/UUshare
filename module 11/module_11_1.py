@@ -1,12 +1,13 @@
 # Домашнее задание по теме "Обзор сторонних библиотек Python"
-import pprint
 import requests
 import pandas as pd
 import numpy as np
 from PIL import Image
-import matplotlib as mpl
+import matplotlib.pyplot as plt
+from itertools import chain
 
 if __name__ == "__main__":
+    """
     # requests
     print("-" * 50, "requests", "-" * 50)
     UU_URL = "https://urban-university.pro"
@@ -15,7 +16,6 @@ if __name__ == "__main__":
         print(res.content)
     else:
         print(f"что-то пошло не так, код={res}")
-    """
 
     # это из пройденного материала
     ACCESS_TOKEN = 'CXyFeSBw2lAdG41xkuU3LS6a_nwyxwwCz2dCkUohw-rw0C49x2HqP__6_4is5RPx'
@@ -43,6 +43,7 @@ if __name__ == "__main__":
     print(flp[["AVGDLJEM", "AVGDL16"]].describe())
     with pd.ExcelWriter("s3.xlsx") as writer:
         flp.to_excel(writer)
+    flp = None
     
     # numpy
     print("-" * 50, "numpy", "-" * 50)
@@ -52,9 +53,23 @@ if __name__ == "__main__":
     narr = narr.T
     print(narr)
     np.savetxt('narr.csv', narr)
+    np = None
     """
-    # matplotlib
+
+    # matplotlib + pandas
     print("-" * 50, "matplotlib", "-" * 50)
+    flp = pd.read_csv("s3.csv", sep=";")
+    flp["DELTA1"] = (flp["AVGDLJEM"] - flp["AVGDL16"])
+    flp["DELTA2"] = (flp["GMDLJEM"] - flp["GMDL16"])
+    array1 = flp[["DELTA1"]].to_numpy()
+    array2 = flp[["DELTA2"]].to_numpy()
+    flat_list1 = list(chain(*array1))
+    flat_list2 = list(chain(*array2))
+    plt.hist([flat_list1, flat_list2], bins=100, histtype='step')
+    plt.semilogy()
+    plt.show()
+    flp = None
+    plt = None
 
     # pillow
     print("-" * 50, "pillow", "-" * 50)
