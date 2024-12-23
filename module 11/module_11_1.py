@@ -1,5 +1,5 @@
 # Домашнее задание по теме "Обзор сторонних библиотек Python"
-import numpy.lib.format
+import pprint
 import requests
 import pandas as pd
 import numpy as np
@@ -7,7 +7,6 @@ from PIL import Image
 import matplotlib as mpl
 
 if __name__ == "__main__":
-    """
     # requests
     print("-" * 50, "requests", "-" * 50)
     UU_URL = "https://urban-university.pro"
@@ -16,6 +15,7 @@ if __name__ == "__main__":
         print(res.content)
     else:
         print(f"что-то пошло не так, код={res}")
+    """
 
     # это из пройденного материала
     ACCESS_TOKEN = 'CXyFeSBw2lAdG41xkuU3LS6a_nwyxwwCz2dCkUohw-rw0C49x2HqP__6_4is5RPx'
