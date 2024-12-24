@@ -65,14 +65,14 @@ if __name__ == "__main__":
     # matplotlib + pandas + numpy
     print("-" * 50, "matplotlib + pandas + numpy", "-" * 50)
     flp = pd.read_csv("s3.csv", sep=";")  # чтение из файла s3.csv
-    flp["DELTA1"] = (flp["AVGDLJEM"] - flp["AVGDL16"])
-    flp["DELTA2"] = (flp["GMDLJEM"] - flp["GMDL16"])
+    flp["DELTA1"] = (flp["AVGDLJEM"] - flp["AVGDL16"])  # 1-ая невязка
+    flp["DELTA2"] = (flp["GMDLJEM"] - flp["GMDL16"])  # 2-ая невязка
     array1 = flp[["DELTA1"]].to_numpy()
     array2 = flp[["DELTA2"]].to_numpy()
     flat_list1 = list(chain(*array1))
     flat_list2 = list(chain(*array2))
-    plt.hist([flat_list1, flat_list2], bins=100, histtype='step')  # нарисовать 2-е гистограммы невязок
-    plt.semilogy()
+    plt.hist([flat_list1, flat_list2], bins=100, histtype='step')  # 2-е гистограммы невязок
+    plt.semilogy()  # ось Y в логарифмическом масштабе
     plt.show()
     flp = None
     plt = None
