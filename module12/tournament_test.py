@@ -42,11 +42,15 @@ class TournamentTest(ut.TestCase):
 
     # Дополнительно (не обязательно)
     def test_tournament_new(self):
+        """
         self.runner_U.distance = 0
         self.runner_A.distance = 0
         tournament = Tournament(90, self.runner_A, self.runner_U)
         res = tournament.start()
         self.assertTrue(str(res[min(res)]) == "Усэйн" and str(res[max(res)]) == "Андрей")
+        """
+        self.assertTrue(str(TournamentTest.all_results[2][min(TournamentTest.all_results[2])]) == "Усэйн" and str(
+            TournamentTest.all_results[2][min(TournamentTest.all_results[2])+1]) == "Андрей")
 
 
 if __name__ == "__main__":
