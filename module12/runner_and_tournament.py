@@ -37,3 +37,19 @@ class Tournament:
                     self.participants.remove(participant)
 
         return finishers
+
+
+if __name__ == "__main__":
+    all_results = {}
+    runner_U = Runner("Усэйн", 10)
+    runner_A = Runner("Андрей", 9)
+    runner_N = Runner("Ник", 3)
+    tournament = Tournament(90, runner_U, runner_N)
+    all_results[0] = tournament.start()
+    tournament = Tournament(90, runner_A, runner_N)
+    all_results[1] = tournament.start()
+    tournament = Tournament(90, runner_U, runner_A, runner_N)
+    all_results[2] = tournament.start()
+    for i in range(len(all_results)):
+         print({j: str(all_results[i][j]) for j in all_results[i]})
+
