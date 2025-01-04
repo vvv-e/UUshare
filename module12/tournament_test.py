@@ -21,11 +21,9 @@ class TournamentTest(ut.TestCase):
 
     def test_tournament(self):
         self.runner_U.distance = 0
-        self.runner_A.distance = 0
         self.runner_N.distance = 0
         self.tournament = Tournament(90, self.runner_U, self.runner_N)
         TournamentTest.all_results[0] = self.tournament.start()
-        self.runner_U.distance = 0
         self.runner_A.distance = 0
         self.runner_N.distance = 0
         self.tournament = Tournament(90, self.runner_A, self.runner_N)
@@ -41,6 +39,14 @@ class TournamentTest(ut.TestCase):
                 flag = False
                 break
         self.assertTrue(flag)
+
+    # Дополнительно (не обязательно)
+    def test_tournament_new(self):
+        self.runner_U.distance = 0
+        self.runner_A.distance = 0
+        tournament = Tournament(90, self.runner_A, self.runner_U)
+        res = tournament.start()
+        self.assertTrue(str(res[min(res)]) == "Усэйн" and str(res[max(res)]) == "Андрей")
 
 
 if __name__ == "__main__":

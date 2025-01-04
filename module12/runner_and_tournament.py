@@ -23,7 +23,19 @@ class Runner:
 class Tournament:
     def __init__(self, distance, *participants):
         self.full_distance = distance
-        self.participants = list(participants)
+        # отсортировать список в соответствии со скоростями для корректной работы программы
+        # Дополнительно (не обязательно)
+        self.participants = []
+        lp = list(participants)
+        while lp:
+            max_speed = 0
+            max_prt = None
+            for prt in lp:
+                if prt.speed >= max_speed:
+                    max_speed = prt.speed
+                    max_prt = prt
+            self.participants.append(max_prt)
+            lp.remove(max_prt)
 
     def start(self):
         finishers = {}
@@ -46,7 +58,6 @@ if __name__ == "__main__":
     runner_N = Runner("Ник", 3)
     tournament = Tournament(90, runner_U, runner_N)
     all_results[0] = tournament.start()
-    runner_U.distance = 0
     runner_A.distance = 0
     runner_N.distance = 0
     tournament = Tournament(90, runner_A, runner_N)
@@ -56,6 +67,9 @@ if __name__ == "__main__":
     runner_N.distance = 0
     tournament = Tournament(90, runner_U, runner_A, runner_N)
     all_results[2] = tournament.start()
+    runner_U.distance = 0
+    runner_A.distance = 0
+    tournament = Tournament(90, runner_A, runner_U)
+    all_results[3] = tournament.start()
     for i in range(len(all_results)):
-         print({j: str(all_results[i][j]) for j in all_results[i]})
-
+        print({j: str(all_results[i][j]) for j in all_results[i]})
