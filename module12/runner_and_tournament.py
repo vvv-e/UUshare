@@ -46,8 +46,14 @@ if __name__ == "__main__":
     runner_N = Runner("Ник", 3)
     tournament = Tournament(90, runner_U, runner_N)
     all_results[0] = tournament.start()
+    runner_U.distance = 0
+    runner_A.distance = 0
+    runner_N.distance = 0
     tournament = Tournament(90, runner_A, runner_N)
     all_results[1] = tournament.start()
+    runner_U.distance = 0
+    runner_A.distance = 0
+    runner_N.distance = 0
     tournament = Tournament(90, runner_U, runner_A, runner_N)
     all_results[2] = tournament.start()
     for i in range(len(all_results)):
