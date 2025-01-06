@@ -5,6 +5,7 @@ from module12.runner_and_tournament import Runner, Tournament
 
 
 class TournamentTest(ut.TestCase):
+    is_frozen = True
 
     @classmethod
     def setUpClass(cls):
@@ -20,6 +21,7 @@ class TournamentTest(ut.TestCase):
         self.runner_A = Runner("Андрей", 9)
         self.runner_N = Runner("Ник", 3)
 
+    @ut.skipIf(is_frozen, "Тесты в этом кейсе заморожены")
     def test_tournament(self):
         self.runner_U.distance = 0
         self.runner_N.distance = 0
@@ -42,6 +44,7 @@ class TournamentTest(ut.TestCase):
         self.assertTrue(flag)
 
     # Дополнительно (не обязательно)
+    @ut.skipIf(is_frozen, "Тесты в этом кейсе заморожены")
     def test_tournament_new(self):
         """
         self.runner_U.distance = 0
@@ -51,7 +54,7 @@ class TournamentTest(ut.TestCase):
         self.assertTrue(str(res[min(res)]) == "Усэйн" and str(res[max(res)]) == "Андрей")
         """
         self.assertTrue(str(TournamentTest.all_results[2][min(TournamentTest.all_results[2])]) == "Усэйн" and str(
-            TournamentTest.all_results[2][min(TournamentTest.all_results[2]) + 1]) == "Андрей")
+            TournamentTest.all_results[2][min(TournamentTest.all_results[2])+1]) == "Андрей")
 
 
 if __name__ == "__main__":
