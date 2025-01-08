@@ -31,9 +31,9 @@ class RunnerTest(ut.TestCase):
         except Exception as exc:
             logging.warning(f"Неверный тип данных для объекта Runner", exc_info=True)
 
+    logging.basicConfig(level=logging.INFO, filemode="w", filename="runner_tests.log", encoding="UTF-8",
+                        format="%(asctime)s; %(levelname)s; %(message)s.")
 
-logging.basicConfig(level=logging.INFO, filemode="w", filename="runner_tests.log", encoding="UTF-8",
-                    format="%(asctime)s; %(levelname)s; %(message)s.")
 
 if __name__ == "__main__":
     ut.main()
