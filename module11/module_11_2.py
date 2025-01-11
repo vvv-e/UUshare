@@ -2,24 +2,30 @@
 import inspect
 from pprint import pprint
 
-from Tools.scripts.make_ctype import method
-
 
 def introspection_info(obj):
     info_dict = {}
+    # type
     info_dict['type'] = type(obj)
-    #attr = [a for a in dir(obj) if callable(getattr(obj, a))]
-    #info_dict['attr'] = attr
+    # attributes
+    attributes = [a for a in dir(obj) if not callable(getattr(obj, a))]
+    info_dict['attributes'] = attributes
+    # all methods
+    methods = [a for a in dir(obj) if callable(getattr(obj, a))]
+    info_dict['all methods'] = methods
+    # class methods
     methods = [m[0] for m in inspect.getmembers(obj, predicate=inspect.isfunction)]
-    info_dict['methods'] = methods
+    info_dict['class methods'] = methods
+    # module
     info_dict['module'] = inspect.getmodule(obj)
-    all_methods = [method for method in dir(obj) if callable(getattr(obj, method))]
-    info_dict['all_methods'] = all_methods
     return info_dict
 
 
 class MyClass():
-    my_int = 0
+    my_class_int = 0
+
+    def __init__(self):
+        self.my_int = 0
 
     def my_medod_one(self):
         pass
@@ -28,14 +34,12 @@ class MyClass():
         pass
 
 
-if __name__ == "1__main__":
-    number_info = introspection_info(42)
-    print(number_info)
-    pprint(number_info)
+if __name__ == "__main__":
     my_class = MyClass
     number_info = introspection_info(my_class)
+    pprint(number_info)
     print("-" * 120)
-    print(number_info)
+    number_info = introspection_info(42)
     pprint(number_info)
 
     # Вывод на консоль:
