@@ -41,6 +41,3 @@ if __name__ == "__main__":
     print("-" * 120)
     number_info = introspection_info(42)
     pprint(number_info)
-
-    # Вывод на консоль:
-    # {'type': 'int', 'attributes': [...], 'methods': ['__abs__', '__add__', ...], 'module': '__main__'}
