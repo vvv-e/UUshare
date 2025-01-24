@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
     # заполнить записями
     for i in range(1, 11):
-        cursor.execute("INSERT INTO Users(username,email,age,balance) VALUES(?,?,?,1000)",
+        cursor.execute("INSERT INTO Users(username, email, age, balance) VALUES(?,?,?,1000)",
                        (f"User{i}", f"example{i}@gmail.com", i * 10))
 
     # Обновить баланс у каждой второй записи, начиная с 1-ой (установить на 500)
@@ -34,7 +34,7 @@ if __name__ == "__main__":
     cursor.execute("DELETE FROM Users WHERE id % 3 = 1")
 
     # Выборку всех записей при помощи fetchall(), где возраст не равен 60
-    cursor.execute("SELECT username,email,age,balance FROM Users WHERE NOT age = ?", (60,))
+    cursor.execute("SELECT username, email, age, balance FROM Users WHERE NOT age = ?", (60,))
     rows = cursor.fetchall()
     for r in rows:
         print(f"Имя: {r[0]}|Почта: {r[1]}|Возраст: {r[2]}|Баланс: {r[3]}")
